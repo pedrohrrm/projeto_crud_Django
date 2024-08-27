@@ -8,7 +8,19 @@
 </head>
 
 <body>
-    <h1>Hello World!</h1>
+    Hello World!
+    <ul>
+        {% for pessoa in pessoas %}
+        <li>{{pessoa.id}} - {{pessoa.nome}} <a href="{% url 'editar' pessoa.id %}"></a> </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'salvar' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nome">
+        <button type="submit">Salvar</button>
+    </form>
+
+
 </body>
 
 </html>
